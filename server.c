@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkhalid <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/14 14:27:12 by mkhalid           #+#    #+#             */
+/*   Updated: 2022/05/14 14:27:16 by mkhalid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 int		g_cpid;
@@ -24,7 +36,6 @@ void	ft_convert(char *s, siginfo_t *info)
 void	handler(int sig, siginfo_t *info, void *p)
 {
 	static int	i;
-	int			j;
 	static char	str[9];
 
 	(void)p;
