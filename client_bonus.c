@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkhalid <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/14 14:27:39 by mkhalid           #+#    #+#             */
+/*   Updated: 2022/05/14 14:27:44 by mkhalid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk_bonus.h"
 
 void	send_signal_bn(int pid, unsigned char c)
@@ -13,7 +25,7 @@ void	send_signal_bn(int pid, unsigned char c)
 			ft_kill(pid, SIGUSR2);
 		c = c << 1;
 		bit++;
-		usleep(300);
+		usleep(800);
 	}
 }
 
@@ -37,6 +49,11 @@ int	main(int argc, char **argv)
 	}
 	signal(SIGUSR2, handler);
 	pid = ft_atoi(argv[1]);
+	if (pid < 0)
+	{
+		write(1, "Please input a positive PID", 27);
+		return (0);
+	}
 	i = 0;
 	while (argv[2][i])
 	{

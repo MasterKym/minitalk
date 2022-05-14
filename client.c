@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkhalid <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/14 14:27:30 by mkhalid           #+#    #+#             */
+/*   Updated: 2022/05/14 14:27:34 by mkhalid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	send_signal(int pid, unsigned char c)
@@ -13,7 +25,7 @@ void	send_signal(int pid, unsigned char c)
 			ft_kill(pid, SIGUSR2);
 		c = c << 1;
 		bit++;
-		usleep(300);
+		usleep(800);
 	}
 }
 
@@ -28,6 +40,11 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
+	if (pid < 0)
+	{
+		write(1, "Please input a positive PID", 27);
+		return (0);
+	}
 	i = 0;
 	while (argv[2][i])
 	{
